@@ -1,5 +1,3 @@
-import autoscaling = require('@aws-cdk/aws-autoscaling');
-import ec2 = require('@aws-cdk/aws-ec2');
 import s3 = require('@aws-cdk/aws-s3');
 import cdk = require('@aws-cdk/cdk');
 import assert = require('assert');
@@ -94,22 +92,6 @@ class ResourceOverridesExample extends cdk.Stack {
                 }
             ]
         };
-
-        const vpc = new ec2.VpcNetwork(this, 'VPC', { maxAZs: 1 });
-        const asg = new autoscaling.AutoScalingGroup(this, 'ASG', {
-            instanceType: new ec2.InstanceTypePair(ec2.InstanceClass.M4, ec2.InstanceSize.XLarge),
-            machineImage: new ec2.AmazonLinuxImage(),
-            vpc
-        });
-
-        //
-        // The default child resource is called `Resource`, but secondary resources, such as
-        // an Auto Scaling Group's launch configuration might have a different ID. You will likely
-        // need to consule the codebase or use the `.map.find` method above
-        //
-
-        const lc = asg.findChild('LaunchConfig') as autoscaling.cloudformation.LaunchConfigurationResource;
-        lc.addPropertyOverride('Foo.Bar', 'Hello');
     }
 }
 

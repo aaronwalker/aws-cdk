@@ -1,4 +1,4 @@
-import { aws } from '../lib' /// <omit/>
+import { aws } from '../lib'; /// <omit/>
 
 export interface AuthorizerProps extends aws.apigateway.AuthorizerPropsBase {
   enrichment() {

@@ -1,7 +1,7 @@
-import { aws } from '../lib' /// <omit/>
+import { aws } from '../lib'; /// <omit/>
 
 export class StageDescriptionProperty extends aws.apigateways.Deployment.StageDescriptionPropertyBase {
-    enrichment() {
-        return 'I am an enriched property type';
-    }
+  public enrichment() {
+    return 'I am an enriched property type';
+  }
 }
